@@ -15,7 +15,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # Core settings
-app.secret_key = os.getenv("SECRET_KEY", "smartlearn_ai_secret")
+app.secret_key = os.getenv("SECRET_KEY")
 app.config["UPLOAD_FOLDER"] = os.getenv("UPLOAD_FOLDER", "static/uploads")
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024  # 16 MB max upload
 
