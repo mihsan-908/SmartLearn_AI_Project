@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="chat-shell">
+    <aside class="chat-sidebar">
+        <h3>SmartLearn AI</h3>
+        <p>Ask questions from your uploaded PDF or chat normally.</p>
+
+        <div class="chat-list">
+            <div class="chat-item">
+                <strong>Current Session</strong>
+                <span id="currentFileName">No PDF uploaded yet</span>
+            </div>
+
+            <div class="chat-item">
+                <strong>Tips</strong>
+                <span>Try: “Summarize chapter 2” or “Explain this in simple words.”</span>
+            </div>
+
+            <div class="chat-item">
+                <strong>Quick Actions</strong>
+                <span>
+                    <a href="{{ url_for('summary.summary') }}">Summary</a> ·
+                    <a href="{{ url_for('quiz.quiz') }}">Quiz</a> ·
+                    <a href="{{ url_for('notes.notes') }}">Notes</a>
+                </span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="chat-main">
+        <div class="content-card reveal">
+            <h1>AI Chat</h1>
+            <p>Talk to SmartLearn AI like a study assistant.</p>
+        </div>
+
+        <section id="chatStream" class="chat-stream">
+            <div class="message ai">
+                Hello! Upload a PDF first, then ask me anything from your notes.
+            </div>
+        </section>
+
+        <form id="chatForm" class="chat-inputbar">
+            <input
+                type="text"
+                id="messageInput"
+                placeholder="Type your question..."
+                autocomplete="off"
+            >
+            <button type="submit">Send</button>
+        </form>
+    </main>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

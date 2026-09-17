@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+    <section class="content-card reveal">
+        <span class="eyebrow">Get In Touch</span>
+        <h1>Contact Support</h1>
+        <p>Have questions, feedback, or need assistance with SmartLearn AI? We're here to help.</p>
+
+        <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+            <div class="history-item" style="padding: 1.25rem;">
+                <h3 style="color: #fff; margin-bottom: 0.5rem;">Email Us</h3>
+                <p style="margin: 0; color: rgba(255,255,255,0.7);">support@smartlearn.ai</p>
+                <span style="font-size: 0.85rem; color: rgba(255,255,255,0.4);">Typical response within 24 hours</span>
+            </div>
+            <div class="history-item" style="padding: 1.25rem;">
+                <h3 style="color: #fff; margin-bottom: 0.5rem;">Community</h3>
+                <p style="margin: 0; color: rgba(255,255,255,0.7);">Join our student discord server to connect with peers and study groups.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 2.5rem;">
+            <a href="{{ url_for('main.home') }}" class="btn-primary">Return to Home</a>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+    <section class="content-card reveal">
+        <h1>Summary Generator</h1>
+        <p>Turn your uploaded PDF into a clean study summary.</p>
+
+        <div class="action-row">
+            <button class="btn-primary" onclick="generateSummary('bullet')">Bullet Summary</button>
+            <button class="btn-secondary" onclick="generateSummary('short')">Short Summary</button>
+            <button class="btn-secondary" onclick="generateSummary('detailed')">Detailed Summary</button>
+        </div>
+
+        <div id="summaryOutput" class="output-box empty-state">
+            Your summary will appear here.
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/summary.js') }}"></script>
+{% endblock %}

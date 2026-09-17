@@ -1,0 +1,38 @@
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment Variables & Secrets (NEVER commit secrets!)
+.env
+.env.*
+!.env.example
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# User Uploads (keep directory structure via .gitkeep)
+static/uploads/*
+!static/uploads/.gitkeep
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs & Temporary Data
+*.log
+scratch/
+tmp/

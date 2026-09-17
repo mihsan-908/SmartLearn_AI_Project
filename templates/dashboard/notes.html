@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+    <section class="content-card reveal">
+        <h1>Smart Notes</h1>
+        <p>Convert long content into short exam-friendly notes.</p>
+
+        <div class="action-row">
+            <button class="btn-primary" onclick="generateNotes()">Generate Notes</button>
+        </div>
+
+        <div id="notesOutput" class="output-box empty-state">
+            Notes will appear here.
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/notes.js') }}"></script>
+{% endblock %}

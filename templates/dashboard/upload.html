@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+    <section class="content-card reveal">
+        <h1>Upload PDF</h1>
+        <p>Upload a PDF file to extract text and use it with AI features.</p>
+
+        <form id="uploadForm" class="upload-form">
+            <label class="drop-zone">
+                <input type="file" name="file" accept=".pdf" required>
+                <span>Click or drop your PDF here</span>
+            </label>
+
+            <button type="submit" class="btn-primary">Upload PDF</button>
+        </form>
+
+        <div id="uploadStatus" class="status-box"></div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+{% endblock %}

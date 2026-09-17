@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+    <section class="content-card reveal">
+        <span class="eyebrow">Activity Log</span>
+        <h1>Study History</h1>
+        <p>Review your saved summaries, quizzes, notes, and AI conversations.</p>
+
+        {% if not summaries and not quizzes and not notes and not chats %}
+            <div class="output-box empty-state" style="margin-top: 1.5rem;">
+                No study history found yet. Upload a PDF and try generating a summary, quiz, notes, or chatting with AI!
+            </div>
+        {% endif %}
+
+        {% if summaries %}
+            <h2 style="font-size: 1.25rem; margin-top: 2rem; color: #f59e0b;">Summaries</h2>
+            <div class="history-list" style="margin-top: 0.75rem;">
+                {% for item in summaries %}
+                    <div class="history-item" style="padding: 1.25rem; margin-bottom: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <strong style="color: #f59e0b; text-transform: capitalize;">{{ item.summary_type }} Summary</strong>
+                            <span style="font-size: 0.8rem; color: rgba(255,255,255,0.4);">{{ item.created_at.strftime('%Y-%m-%d %H:%M') if item.created_at else '' }}</span>
+                        </div>
+                        <div style="white-space: pre-wrap; font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.85);">{{ item.generated_summary }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if quizzes %}
+            <h2 style="font-size: 1.25rem; margin-top: 2rem; color: #ea580c;">Quizzes</h2>
+            <div class="history-list" style="margin-top: 0.75rem;">
+                {% for item in quizzes %}
+                    <div class="history-item" style="padding: 1.25rem; margin-bottom: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <strong style="color: #ea580c;">{{ item.quiz_type }}</strong>
+                            <span style="font-size: 0.8rem; color: rgba(255,255,255,0.4);">{{ item.created_at.strftime('%Y-%m-%d %H:%M') if item.created_at else '' }}</span>
+                        </div>
+                        <div style="white-space: pre-wrap; font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.85);">{{ item.questions_json }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if notes %}
+            <h2 style="font-size: 1.25rem; margin-top: 2rem; color: #db2777;">Notes</h2>
+            <div class="history-list" style="margin-top: 0.75rem;">
+                {% for item in notes %}
+                    <div class="history-item" style="padding: 1.25rem; margin-bottom: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <strong style="color: #db2777;">Revision Notes</strong>
+                            <span style="font-size: 0.8rem; color: rgba(255,255,255,0.4);">{{ item.created_at.strftime('%Y-%m-%d %H:%M') if item.created_at else '' }}</span>
+                        </div>
+                        <div style="white-space: pre-wrap; font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.85);">{{ item.generated_notes }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if chats %}
+            <h2 style="font-size: 1.25rem; margin-top: 2rem; color: #0284c7;">Recent Q&A Chats</h2>
+            <div class="history-list" style="margin-top: 0.75rem;">
+                {% for item in chats %}
+                    <div class="history-item" style="padding: 1.25rem; margin-bottom: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <strong style="color: #0284c7;">Q: {{ item.user_message }}</strong>
+                            <span style="font-size: 0.8rem; color: rgba(255,255,255,0.4);">{{ item.created_at.strftime('%Y-%m-%d %H:%M') if item.created_at else '' }}</span>
+                        </div>
+                        <div style="white-space: pre-wrap; font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.85);">{{ item.ai_response }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

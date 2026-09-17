@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+    <section class="content-card reveal">
+        <span class="eyebrow">Capabilities</span>
+        <h1>SmartLearn AI Features</h1>
+        <p>Explore the specialized tools built to accelerate your learning and exam preparation.</p>
+        
+        <div style="margin-top: 2rem; display: grid; gap: 1.5rem;">
+            <div class="history-item" style="padding: 1.25rem;">
+                <h3 style="color: #0284c7; margin-bottom: 0.5rem;">💬 AI Document Chat</h3>
+                <p style="margin: 0; color: rgba(255,255,255,0.7);">Ask specific questions about your uploaded documents and receive contextual, accurate answers immediately without reading hundreds of pages.</p>
+            </div>
+            <div class="history-item" style="padding: 1.25rem;">
+                <h3 style="color: #f59e0b; margin-bottom: 0.5rem;">📄 Multi-Format Summaries</h3>
+                <p style="margin: 0; color: rgba(255,255,255,0.7);">Select between bullet points, quick overviews, or comprehensive structured breakdowns to grasp core concepts in minutes.</p>
+            </div>
+            <div class="history-item" style="padding: 1.25rem;">
+                <h3 style="color: #ea580c; margin-bottom: 0.5rem;">🧠 Quiz & MCQ Generator</h3>
+                <p style="margin: 0; color: rgba(255,255,255,0.7);">Test your retention by generating multiple-choice practice quizzes directly from your material with answer keys.</p>
+            </div>
+            <div class="history-item" style="padding: 1.25rem;">
+                <h3 style="color: #db2777; margin-bottom: 0.5rem;">📝 Exam Revision Notes</h3>
+                <p style="margin: 0; color: rgba(255,255,255,0.7);">Transform dense textbooks and lecture handouts into structured revision notes organized by topics and key takeaways.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 2.5rem; display: flex; gap: 1rem;">
+            <a href="{{ url_for('main.dashboard') }}" class="btn-primary">Go to Dashboard</a>
+            <a href="{{ url_for('main.home') }}#uploadSection" class="btn-secondary">Upload PDF</a>
+        </div>
+    </section>
+</div>
+{% endblock %}

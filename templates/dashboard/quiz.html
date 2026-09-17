@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+    <section class="content-card reveal">
+        <h1>Quiz Generator</h1>
+        <p>Create quick revision questions from your uploaded notes.</p>
+
+        <div class="action-row">
+            <select id="questionCount" class="quiz-select" style="padding: 10px 16px; border-radius: 10px; background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.15); outline: none;">
+                <option value="3" style="background: #1e1b2e; color: #fff;">3 Questions</option>
+                <option value="5" selected style="background: #1e1b2e; color: #fff;">5 Questions</option>
+                <option value="10" style="background: #1e1b2e; color: #fff;">10 Questions</option>
+            </select>
+            <button class="btn-primary" onclick="generateQuiz()">Generate Quiz</button>
+        </div>
+
+        <div id="quizOutput" class="output-box empty-state">
+            Quiz questions will appear here.
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}
