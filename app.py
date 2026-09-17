@@ -23,7 +23,7 @@ app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024  # 16 MB max upload
 app.config["DB_HOST"] = os.getenv("DB_HOST", "localhost")
 app.config["DB_NAME"] = os.getenv("DB_NAME", "SmartLearn-AI")
 app.config["DB_USER"] = os.getenv("DB_USER", "postgres")
-app.config["DB_PASSWORD"] = os.getenv("DB_PASSWORD", "ehsan12")
+app.config["DB_PASSWORD"] = os.getenv("DB_PASSWORD")
 app.config["DB_PORT"] = os.getenv("DB_PORT", "5432")
 
 # Make sure upload folder exists
